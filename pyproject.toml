@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "model-bridge"
+version = "0.1.0"
+description = "A unified model manager for local AI models (HuggingFace, GGUF, ComfyUI, etc.)"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "obrs09", email = "obrs09@example.com"}
+]
+keywords = ["model", "manager", "huggingface", "gguf", "comfyui", "ai", "machine-learning"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "click>=8.0.0",
+    "rich>=13.0.0",
+    "huggingface_hub>=0.20.0",
+]
+
+[project.optional-dependencies]
+gguf = [
+    "gguf>=0.6.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "gguf>=0.6.0",
+]
+all = [
+    "gguf>=0.6.0",
+]
+
+[project.scripts]
+mb = "model_bridge.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/obrs09/model-bridge"
+Repository = "https://github.com/obrs09/model-bridge"
+Documentation = "https://github.com/obrs09/model-bridge#readme"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
